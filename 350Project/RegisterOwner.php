@@ -33,10 +33,39 @@ Released for free under a Creative Commons Attribution 2.5 License
 		 
 		$num_rows = mysqli_num_rows($unameresult);
 		//echo $num_rows;
-		if ($num_rows > 0){
-			echo '<META http-equiv="refresh" content="0;URL=verifylogin.php">';
+		if ($num_rows == 0){
+			//echo '<META http-equiv="refresh" content="0;URL=verifylogin.php">';
+			
+			$query = "INSERT INTO ownercontactinfo (First, Last, Phone, email) 
+			VALUES ('$firstName', '$lastName', '$phone', '$email')";
+
+			//echo $query;
+		
+		
+			$query3 = "INSERT INTO location (owner_id, address, zip, city, state) 
+			VALUES (LAST_INSERT_ID(),'$address', '$zipcode', '$city', '$state')";
+
+			//echo $query3;
+			
+			$query2 = "INSERT INTO credentials (username, password, owner_id)
+			VALUES ('$username', '$encryptedPW', LAST_INSERT_ID())";
+
+			//echo $query2;
+
+			$result = mysqli_query($db, $query)
+			or die("Error Querying Database");
+
+			$result2 = mysqli_query($db, $query2)
+			or die("Error Querying Database");
+			
+			$result3 = mysqli_query($db, $query3)
+			or die("Error Querying Database");
+		
+			header("location:ownerInfo.php");
 		}
+			
 	}
+	
 ?>
 
 <meta name="keywords" content="" />

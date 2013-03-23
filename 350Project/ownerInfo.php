@@ -9,70 +9,43 @@ Released for free under a Creative Commons Attribution 2.5 License
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>Forever Home</title>
 <?php
-/*
-	include "miniondb_connect.php";
-		$firstName = mysqli_real_escape_string($db, trim($_POST['firstName']));
-		$lastName = mysqli_real_escape_string($db, trim($_POST['lastName']));
-		$address = mysqli_real_escape_string($db, trim($_POST['address']));
-		$city = mysqli_real_escape_string($db, trim($_POST['city']));
-		$state = mysqli_real_escape_string($db, trim($_POST['state']));
-		$phone = mysqli_real_escape_string($db, trim($_POST['phoneNum']));
-		$email = mysqli_real_escape_string($db, trim($_POST['email']));
-		$zipcode = mysqli_real_escape_string($db, trim($_POST['zip']));
-		$username = mysqli_real_escape_string($db, trim($_POST['username']));
-		$password = mysqli_real_escape_string($db, trim($_POST['password']));
-		//$secQ = mysqli_real_escape_string($db, trim($_POST['question']));
-		//$answer = mysqli_real_escape_string($db, trim($_POST['answer']));
-		$encryptedPW = sha1($password);
-		
-		
-		$unamequery = "SELECT COUNT(*) FROM credentials WHERE username = '$username'";
-		
-	    $unameresult = mysqli_query($db, $unamequery)
+session_start();
+include "miniondb_connect.php";
+
+	if (isset($_POST['inputtext1']) && isset($_POST['inputtext2'])){
+	   $uName = mysqli_real_escape_string($db, trim($_POST['inputtext1']));
+	   $pwd = mysqli_real_escape_string($db, trim($_POST['inputtext2']));
+	   $encryptedPW = sha1($pwd);
+	   
+	   $query = "select * from credentials WHERE username = '$uName' AND password = '$encryptedPW'";
+	   //echo $query;
+	   $query2 = "SELECT ownercontactinfo.First FROM ownercontactinfo JOIN credentials 
+	   WHERE credentials.username = '$uName' AND credentials.password = '$encryptedPW' 
+	   AND credentials.owner_id = ownercontactinfo.owner_id";
+	   //echo $query2;
+		$result = mysqli_query($db, $query)
          or die("Error Querying Database");
 		 
-		 echo $unamequery;
+		 $result2 = mysqli_query($db, $query2)
+         or die("Error Querying Database");
 		 
-		 echo $unameresult -> num_rows;
+		 if ($row = mysqli_fetch_array($result2)){
+			 $_SESSION['owner_name'] = $row['First'];
+			 //echo $_SESSION['owner_name'];
+         }
 		 
-		 $num_rows = $unameresult -> num_rows;
-		 
-		 if($num_rows > 1){ 
-			echo '<p> This username already exists! Please re-enter your username and password. </p>';		
-			header("location:RegisterMinion.php");
-		 
-		}else{
-		
-		$query = "INSERT INTO ownercontactinfo (First, Last, Phone, email) 
-		VALUES ('$firstName', '$lastName', '$phone', '$email')";
-
-		//echo $query;
-		
-		
-		$query3 = "INSERT INTO location (owner_id, address, zip, city, state) 
-		VALUES (LAST_INSERT_ID(),'$address', '$zipcode', '$city', '$state')";
-
-		//echo $query3;
-		
-		$query2 = "INSERT INTO credentials (username, password, owner_id)
-		VALUES ('$username', '$encryptedPW', LAST_INSERT_ID())";
-
-		//echo $query2;
-
-		$result = mysqli_query($db, $query)
-        or die("Error Querying Database");
-
-		$result2 = mysqli_query($db, $query2)
-        or die("Error Querying Database");
-		
-		$result3 = mysqli_query($db, $query3)
-        or die("Error Querying Database");
-		
-		//header("location:index.php");
+		 if ($row = mysqli_fetch_array($result))
+         {
+		 $pword = $row['password'];
+  		 $user = $row['username'];
+		 //$id = $row['owner_id'];
+		 $_SESSION['owner_id'] = $row['owner_id'];
+		 //setcookie("ZipCode", $row['zipcode'], time() + 3600 * 24); 
+		 echo '<META http-equiv="refresh" content="0;URL=welcome.php">';
+		 //echo $_SESSION['owner_id'];
 		}
 		
-		
-	*/	
+      }
 ?>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
@@ -100,12 +73,12 @@ Released for free under a Creative Commons Attribution 2.5 License
 		<div id="Register your Minion" class="post">
 			<p><img src="images/pets2.jpg" alt="" width="500" height="300" /></p>
 		
-		<p>Thank you <?=$firstName?> for Registering with Forever Home. </br>
-		Please log in to place a Minion up for adoption or search for a Minion best suited for you.</p>
+		<h2>Thank you for Registering with Forever Home. </br>
+		Please log in to place a Minion up for adoption or search for a Minion best suited for you.</h2>
 		<div id="login" class="boxed">
 			<h2 class="title">User Account</h2>
 			<div class="content">
-				<form id="form1" method="post" action="verifylogin.php">
+				<form id="form1" method="post" action="ownerInfo.php">
 					<fieldset>
 					<legend>Sign-In</legend>
 					<label for="inputtext1">User ID:</label>

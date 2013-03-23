@@ -10,6 +10,42 @@ Released for free under a Creative Commons Attribution 2.5 License
 <title>Forever Home</title>
 <?php
 session_start();
+include "miniondb_connect.php";
+
+	if (isset($_POST['name']) && isset($_POST['password'])){
+	   $uName = mysqli_real_escape_string($db, trim($_POST['name']));
+	   $pwd = mysqli_real_escape_string($db, trim($_POST['password']));
+	   $encryptedPW = sha1($pwd);
+	   
+	   $query = "select * from credentials WHERE username = '$uName' AND password = '$encryptedPW'";
+	   //echo $query;
+	   $query2 = "SELECT ownercontactinfo.First FROM ownercontactinfo JOIN credentials 
+	   WHERE credentials.username = '$uName' AND credentials.password = '$encryptedPW' 
+	   AND credentials.owner_id = ownercontactinfo.owner_id";
+	   //echo $query2;
+		$result = mysqli_query($db, $query)
+         or die("Error Querying Database");
+		 
+		 $result2 = mysqli_query($db, $query2)
+         or die("Error Querying Database");
+		 
+		 if ($row = mysqli_fetch_array($result2)){
+			 $_SESSION['owner_name'] = $row['First'];
+			 //echo $_SESSION['owner_name'];
+         }
+		 
+		 if ($row = mysqli_fetch_array($result))
+         {
+		 $pword = $row['password'];
+  		 $user = $row['username'];
+		 //$id = $row['owner_id'];
+		 $_SESSION['owner_id'] = $row['owner_id'];
+		 //setcookie("ZipCode", $row['zipcode'], time() + 3600 * 24); 
+		 echo '<META http-equiv="refresh" content="0;URL=welcome.php">';
+		 //echo $_SESSION['owner_id'];
+		}
+		
+      }
 ?>
 
 <meta name="keywords" content="" />
