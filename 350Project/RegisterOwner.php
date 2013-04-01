@@ -81,28 +81,10 @@ Released for free under a Creative Commons Attribution 2.5 License
 		var pass2 = document.getElementById("check").value;
 		
 		if(pass1 != pass2) {
-			alert ("Passwords do not match! Please re-enter your passwords.");
+			alert ("Uh oh, passwords don't match! Please re-enter your passwords.");
 			}
 		}
 </script>
-			
-
-	<!--function checkMe(){
-		include "miniondb_connect.php";
-		$uName = mysqli_real_escape_string($db, trim($_POST['username']));
-		$query = "SELECT COUNT(*) FROM credentials WHERE username = '$uName'";
-	   
-	   $result = mysqli_query($db, $query)
-         or die("Error Querying Database");
-		 
-		 if(mysql_num_rows($result) > 0){
-			echo 'Username exists! Please choose another user name.';
-			}
-		 
-		}
-		
-	-->
-
 
 <div id="logo">
 	<h1><a href="#">Forever <i> Home</i></a></h1>
@@ -112,13 +94,11 @@ Released for free under a Creative Commons Attribution 2.5 License
 	<div id="sidebar">
 		<div id="menu">
 			<ul>
-				<li><a href="index.php" title="">Homepage</a></li>
-				<li><a href="#" title="">About Us</a></li>
+				<li><a href="Home.php" title="">Homepage</a></li>
+				<li><a href="aboutUs.php" title="About Us">About Us</a></li>
 				<li class="active"><a href="RegisterOwner.php" title="">Register</a></li>
-				<li><a href="findMinion.php" title="">Find a Minion</a></li>
-				<li><a href="#" title="">Adopt a Minion</a></li>
-				<li><a href="registerMinion.php" title="">Place Minion for adoption</a></li>
-				<li><a href="#" title="">Support</a></li>
+				<li><a href="adopt.php" title="">Adopt a Minion</a></li>
+				<li><a href="RegisterMinion.php" title="">Place a Minion for Adoption</a></li>
 			</ul>
 		</div>
 		
@@ -166,7 +146,6 @@ Released for free under a Creative Commons Attribution 2.5 License
 </div>
 <div id="footer">
 	<p id="legal">Copyright &copy; 2013 Forever Home. All Rights Reserved. Designed by <a href="http://www.freecsstemplates.org">FCT</a>.</p>
-	<p id="links"><a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
 </div>
 </body>
 </html>

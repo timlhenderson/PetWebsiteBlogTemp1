@@ -9,41 +9,77 @@ Released for free under a Creative Commons Attribution 2.5 License
 
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>Forever Home</title>
+
+<?php
+session_start();
+include "miniondb_connect.php";
+	
+	if (isset($_POST['minionName'])) {
+		$minionName = mysqli_real_escape_string($db, trim($_POST['minionName']));
+		$age = mysqli_real_escape_string($db, trim($_POST['age']));
+		$sex = mysqli_real_escape_string($db, trim($_POST['sex']));
+		$breed = mysqli_real_escape_string($db, trim($_POST['breed']));
+		$color = mysqli_real_escape_string($db, trim($_POST['color']));
+		$condition = mysqli_real_escape_string($db, trim($_POST['medical']));
+		$type = mysqli_real_escape_string($db, trim($_POST['animal']));
+		$fixed = mysqli_real_escape_string($db, trim($_POST['fixed']));
+		$vaccines = mysqli_real_escape_string($db, trim($_POST['vaccines']));
+		$temperment = mysqli_real_escape_string($db, trim($_POST['temp']));
+		$size = mysqli_real_escape_string($db, trim($_POST['size']));
+		$picture = mysqli_real_escape_string($db, trim($_POST['uploadPicture']));
+		
+		
+		$query2 = "INSERT INTO color (color) VALUES ('$color')";
+		
+		$query3 = "INSERT INTO vaccines(vaccine) VALUES ('$vaccines')";
+		
+		$query5 = "INSERT INTO temperment(temperment) VALUES ('$temperment')";
+		
+		$query6 = "INSERT INTO type (animal) VALUES ('$type')";
+		
+		$query7 = "INSERT INTO breed_id (breed) VALUES ('$breed')";
+		
+		$query8 = "INSERT INTO picture (picture) VALUES ('$picture')";
+		
+		$query9 = "INSERT INTO pet_size (size) VALUES ('$size')";
+		
+		$query1 = "INSERT INTO pet_info (owner_id, Name, Age, Sex, fixed,temp_id, type_id, breed_id, size_id, pic_id, med_id) 
+			VALUES ('{$_SESSION['owner_id']}', '$minionName', '$age', '$sex', '$fixed', LAST_INSERT_ID(),
+			LAST_INSERT_ID(), LAST_INSERT_ID(), LAST_INSERT_ID(), LAST_INSERT_ID(), LAST_INSERT_ID())";
+
+		$result2 = mysqli_query($db, $query2)
+			or die("Error Querying Database");
+			
+		$result3 = mysqli_query($db, $query3)
+			or die("Error Querying Database");
+
+		$result5 = mysqli_query($db, $query5)
+			or die("Error Querying Database");
+			
+		$result6 = mysqli_query($db, $query6)
+			or die("Error Querying Database");
+			
+		$result7 = mysqli_query($db, $query7)
+			or die("Error Querying Database");
+			
+		$result8 = mysqli_query($db, $query8)
+			or die("Error Querying Database");
+			
+		$result9 = mysqli_query($db, $query9)
+			or die("Error Querying Database");
+			
+		$result1 = mysqli_query($db, $query1)
+			or die("Error Querying Database");
+			
+		}
+		
+	    ?>
+		
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <link href="default.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-
-<script>
-	function matchPasswords(){
-		
-		var pass1 = document.getElementById("password").value;
-		var pass2 = document.getElementById("check").value;
-		
-		if(pass1 != pass2) {
-			alert ("Uh oh, passwords don't match! Please re-enter your passwords.");
-			}
-		}
-</script>
-			
-
-	<!--function checkMe(){
-		include "miniondb_connect.php";
-		$uName = mysqli_real_escape_string($db, trim($_POST['username']));
-		$query = "SELECT COUNT(*) FROM credentials WHERE username = '$uName'";
-	   
-	   $result = mysqli_query($db, $query)
-         or die("Error Querying Database");
-		 
-		 if(mysql_num_rows($result) > 0){
-			echo 'Username exists! Please choose another user name.';
-			}
-		 
-		}
-		
-	-->
-
 <div id="logo">
 	<h1><a href="#">Forever <i> Home</i></a></h1>
 	<h2><span>By Free CSS Templates</span></h2>
@@ -52,36 +88,50 @@ Released for free under a Creative Commons Attribution 2.5 License
 	<div id="sidebar">
 		<div id="menu">
 			<ul>
-				<li><a href="index.php" title="">Homepage</a></li>
-				<li><a href="#" title="">About Us</a></li>
+				<li><a href="Home.php" title="">Homepage</a></li>
+				<li><a href="aboutUs.php" title="About Us">About Us</a></li>
 				<li><a href="RegisterOwner.php" title="">Register</a></li>
-				<li class="active"><a href="findMinion.php" title="">Find a Minion</a></li>
-				<li class="active"><a href="findMinion.php" title="">Adopt a Minion</a></li>
-				<li><a href="#" title="">Support</a></li>
+				<li><a href="adopt.php" title="">Adopt a Minion</a></li>
+				<li class="active"><a href="RegisterMinion.php" title="">Place a Minion for Adoption</a></li>
 			</ul>
 		</div>
-
 		</div>
-<div id="main">
-		<div id="Register Minion" class="post">
-
-		
-	</div>
 	<div id="main">
-		<div id="Register Your Minion" class="post">
-
+		<div id="Register your Minion" class="post">
 			<p><img src="images/pets2.jpg" alt="" width="500" height="300" /></p>
+
+
 			<h1 class="title">Place a minion up for adoption.</h1>
 			<!-- Place minion -->		
 			
 			<p>Please fill in the following fields. Provide sufficient information to 
 			ensure your minion finds the right home.</p>
 			
-			<form method = "post" action = "minionInfo.php">
+			<form method = "post" action = "RegisterMinion.php">
 					<table>
 					<tr><td>Minion name: </td><td><input type="text" id="minionName" name="minionName" /></td></tr>
-					<tr><td>Age</td><td><input type="text" id="age" name="age"/></td></tr>
-					<tr><td>Sex</td><td><input type="text" id="sex" name="sex"/></td></tr>
+					<tr><td>Age</td><td>
+					<select name="age" id="age">
+                                        <option value="">Any</option>
+                                        <option value="young">Young</option>
+                                        <option value="adult">Adult</option>
+                                        <option value="senior">Senior</option>
+                                        <option value="puppy">Puppy </option>
+                                      </select></td></tr>
+					<tr><td>Sex</td><td>
+					<select name="sex" id="sex">
+                                        <option selected="selected" value="">Any</option>
+                                        <option value="m">Male</option>
+                                        <option value="f">Female</option>
+                                      </select></td></tr>
+					<tr><td>Size</td><td>
+					<select name="size" id="size">
+                                        <option value="" selected="selected">Any</option>
+                                        <option value="1|Small 25 lbs (11 kg) or less">Small 25 lbs (11 kg) or less</option>
+                                        <option value="2|Med. 26-60 lbs (12-27 kg)">Med. 26-60 lbs (12-27 kg)</option>
+                                        <option value="3|Large 61-100 lbs (28-45 kg)">Large 61-100 lbs (28-45 kg)</option>
+                                        <option value="4|X-Large 101 lbs (46 kg) or more">X-Large 101 lbs (46 kg) or more</option>
+                                      </select></td></tr>
 					<tr><td>Breed</td><td><input type="text" id="breed" name="breed"/></td></tr>
 					<tr><td>Color</td><td><input type="text" id="color" name="color"/></td></tr>
 					<!--<tr><td>Type</td><td><input type="text" id="type" name="type"/></td></tr>-->
@@ -107,17 +157,10 @@ Released for free under a Creative Commons Attribution 2.5 License
 						<option value="no">No</option>
 					</select></td></tr>
 					<tr></tr><tr></tr>
-					<tr><td>Temperment: </td><td>
-				<input type="checkbox" name="temp1" value="unknown">&nbsp;Unknown
-				<input type="checkbox" name="temp1" value="children">&nbsp;Good with children</td></tr>
-				<tr><td></td><td><input type="checkbox" name="temp1" value="dogs">&nbsp;Good with dogs
-				<input type="checkbox" name="temp4" value="cats">&nbsp;Good with cats</td></tr>
-				<tr><td></td><td><input type="checkbox" name="temp5" value="allpets">&nbsp;Good with all pets
-				<input type="checkbox" name="temp6" value="friendly">&nbsp;Friendly</td></tr>
-				<tr><td></td><td><input type="checkbox" name="temp7" value="timid">&nbsp;Timid
-				<input type="checkbox" name="temp8" value="energetic">&nbsp;Energetic
-				<input type="checkbox" name="temp9" value="fearful">&nbsp;Fearful</td></tr>
-				<tr><td></td><td><tr><td></td><td><tr><td></td><td><tr><td></td><td>
+					
+					<tr><td>Please provide us some information about your pets temperment/personality. Ex. Good with Children. Energetic.</td><td>
+					<textarea id="temp" name="temp" cols="30" rows="6"></textarea></td></tr>
+					
 				<tr><td>Upload Picture: </td><td><form name="picture" action="" method="post">
 					<input type="file" name="uploadPicture" />
 				</form></td></tr>
@@ -129,9 +172,9 @@ Released for free under a Creative Commons Attribution 2.5 License
 			
 			</div>
 	</div>
+</div>
 <div id="footer">
 	<p id="legal">Copyright &copy; 2013 Forever Home. All Rights Reserved. Designed by <a href="http://www.freecsstemplates.org">FCT</a>.</p>
-	<p id="links"><a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
 </div>
 </body>
 </html>

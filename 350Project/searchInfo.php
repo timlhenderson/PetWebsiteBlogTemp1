@@ -13,12 +13,11 @@
 	<div id="sidebar">
 		<div id="menu">
 			<ul>
-				<li><a href="index.php" title="">Homepage</a></li>
-				<li><a href="#" title="">About Us</a></li>
-				<li><a href="RegisterMinion.php" title="">Register</a></li>
-				<li class="active"><a href="findMinion.php" title="">Find a Minion</a></li>
-				<li class="active"><a href="findMinion.php" title="">Adopt a Minion</a></li>
-				<li><a href="#" title="">Support</a></li>
+				<li><a href="Home.php" title="">Homepage</a></li>
+				<li><a href="aboutUs.php" title="About Us">About Us</a></li>
+				<li><a href="RegisterOwner.php" title="">Register</a></li>
+				<li><a href="adopt.php" title="">Adopt a Minion</a></li>
+				<li><a href="RegisterMinion.php" title="">Place a Minion for Adoption</a></li>
 			</ul>
 		</div>
 		</div>
@@ -46,7 +45,6 @@
 	</div>
 <div id="footer">
 	<p id="legal">Copyright &copy; 2013 Forever Home. All Rights Reserved. Designed by <a href="http://www.freecsstemplates.org">FCT</a>.</p>
-	<p id="links"><a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
 </div>
 </body>
 </html>

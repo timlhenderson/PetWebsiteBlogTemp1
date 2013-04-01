@@ -8,11 +8,6 @@ Released for free under a Creative Commons Attribution 2.5 License
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>Forever Home</title>
-<?php
-session_start();
-
-?>
-
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <link href="default.css" rel="stylesheet" type="text/css" />
@@ -27,41 +22,22 @@ session_start();
 		<div id="menu">
 			<ul>
 				<li><a href="Home.php" title="">Homepage</a></li>
-				<li><a href="aboutUs.php" title="About Us">About Us</a></li>
-				<li class="active"><a href="RegisterOwner.php" title="">Register</a></li>
+				<li class="active"><a href="aboutUs.php" title="About Us">About Us</a></li>
+				<li><a href="RegisterOwner.php" title="">Register</a></li>
 				<li><a href="adopt.php" title="">Adopt a Minion</a></li>
 				<li><a href="RegisterMinion.php" title="">Place a Minion for Adoption</a></li>
 			</ul>
 		</div>
 		</div>
 	<div id="main">
-		<!--<div id="Register your Minion" class="post">-->
 			<p><img src="images/pets2.jpg" alt="" width="500" height="300" /></p>
-		<h1>Welcome to Forever Home! </h1>
-		<p>Thank you for Registering with Forever Home. </br>
-		Please log in to place a Minion up for adoption or search for a Minion best suited for you.</p>
-		
-		
-		<!--Please log in to place a Minion up for adoption or search for a Minion best suited for you.</p>
-		<div id="login" class="boxed">-->
-			<!--<h2 class="title">User Account</h2>
-			<div class="content">
-				<form id="form1" method="post" action="verifylogin.php">
-					<fieldset>
-					<legend>Sign-In</legend>
-					<label for="inputtext1">User ID:</label>
-					<input id="inputtext1" type="text" name="inputtext1" value="" />
-					<label for="inputtext2">Password:</label>
-					<input id="inputtext2" type="password" name="inputtext2" value="" />
-					<input id="inputsubmit1" type="submit" name="inputsubmit1" value="Sign In" />
-					<p><a href="#">Forgot your password?</a></p>
-					</fieldset>
-				</form>
-			</div>-->
-		</div>
-		
-		
-		
+			<!-- About Us page -->
+			<h2> Welcome to Forever Home! <h2> </br> </br>
+			
+			
+			
+			
+			</div>
 		</div>
 	</div>
 </div>

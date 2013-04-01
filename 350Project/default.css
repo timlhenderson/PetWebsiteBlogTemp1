@@ -14,12 +14,14 @@ body {
 	margin: 0;
 	background: #FFFFFF url(images/img01.gif) repeat-x 0 130px;
 	font: normal small Verdana, Arial, Helvetica, sans-serif;
-	color: #959595;
+	color: #086A87;
+	/*#959595;*/
 }
 
 h1, h2, h3 {
 	font-family: Georgia, "Times New Roman", Times, serif;
-	color: #385B88;
+	color: #086A87;
+	/*#385B88;*/
 }
 
 h2 {
@@ -165,14 +167,16 @@ img {
 #logo h1 a {
 	text-transform: uppercase;
 	font-size: 30px;
-	color: #FFFFFF;
+	color: #086A87;
+	/*#FFFFFF;*/
 }
 
 #logo h1 i {
 	text-transform: lowercase;
 	letter-spacing: -3px;
 	font: italic normal 48px Georgia, "Times New Roman", Times, serif;
-	color: #385B88;
+	color: #086A87;
+	/*#385B88;*/
 }
 
 #logo h2 {

@@ -65,12 +65,11 @@ include "miniondb_connect.php";
 		<div id="menu">
 			<ul>
 				<li class="active"><a href="index.php" title="">Homepage</a></li>
-				<li><a href="#" title="">About Us</a></li>
+				<li><a href="aboutUs.php" title="About Us">About Us</a></li>
 				<li><a href="RegisterOwner.php" title="">Register</a></li>
 				<!--<li><a href="Adoption.php" title="">Place Minion for Adoption</a></li>
 				<li><a href="Search.php" title="">Find a Minion</a></li>
 				<li><a href="#" title="">Adopt a Minion</a></li>-->
-				<!--<li><a href="#" title="">Support</a></li>-->
 			</ul>
 		</div>
 		<div id="login" class="boxed">
