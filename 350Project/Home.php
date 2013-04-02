@@ -95,6 +95,11 @@ include "miniondb_connect.php";
 					<input type="submit" name="submit" value="Sign In"/>
 					<!--<p><a href="#">Forgot your password?</a></p>-->
 					</fieldset>
+					
+					</br>
+					</br>
+					<p><img src="images/petpic.jpg" alt="" width="240" height="170" /></p>
+					
 					</form>
 					
 				
