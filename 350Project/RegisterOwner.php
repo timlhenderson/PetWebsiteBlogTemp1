@@ -88,7 +88,6 @@ Released for free under a Creative Commons Attribution 2.5 License
 
 <div id="logo">
 	<h1><a href="#">Forever <i> Home</i></a></h1>
-	<h2><span>By Free CSS Templates</span></h2>
 </div>
 <div id="content">
 	<div id="sidebar">
@@ -99,6 +98,13 @@ Released for free under a Creative Commons Attribution 2.5 License
 				<li class="active"><a href="RegisterOwner.php" title="">Register</a></li>
 				<li><a href="adopt.php" title="">Adopt a Minion</a></li>
 				<li><a href="RegisterMinion.php" title="">Place a Minion for Adoption</a></li>
+				
+				</br>
+				</br>
+				</br>
+				</br>
+				
+				<p><img src="images/pets5.jpg" alt="" width="240" height="170" /></p>
 			</ul>
 		</div>
 		
