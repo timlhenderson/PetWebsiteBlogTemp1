@@ -167,8 +167,7 @@ include "miniondb_connect.php";
 					<tr><td>Please provide us some information about your pets temperment/personality. Ex. Good with Children. Energetic.</td><td>
 					<textarea id="temp" name="temp" cols="30" rows="6"></textarea></td></tr>
 					
-				<tr><td>Upload Picture: </td><td><form name="picture" action="" method="post">
-					<input type="file" name="uploadPicture" />
+			
 				</form></td></tr>
 					
 					<tr><td>&nbsp;</td><td><input type="submit" value="Register Minion" /></td></tr>
