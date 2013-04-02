@@ -57,7 +57,7 @@ include "miniondb_connect.php";
 <body>
 <div id="logo">
 	<h1><a href="#">Forever <i> Home</i></a></h1>
-	<h2><span>By Free CSS Templates</span></h2>
+	
 </div>
 
 <div id="content">
