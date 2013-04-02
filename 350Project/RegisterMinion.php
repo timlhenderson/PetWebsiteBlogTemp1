@@ -82,7 +82,6 @@ include "miniondb_connect.php";
 <body>
 <div id="logo">
 	<h1><a href="#">Forever <i> Home</i></a></h1>
-	<h2><span>By Free CSS Templates</span></h2>
 </div>
 <div id="content">
 	<div id="sidebar">
@@ -93,6 +92,13 @@ include "miniondb_connect.php";
 				<li><a href="RegisterOwner.php" title="">Register</a></li>
 				<li><a href="adopt.php" title="">Adopt a Minion</a></li>
 				<li class="active"><a href="RegisterMinion.php" title="">Place a Minion for Adoption</a></li>
+				
+				</br>
+				</br>
+				</br>
+				</br>
+				
+				<p><img src="images/pets4.jpg" alt="" width="240" height="170" /></p>
 			</ul>
 		</div>
 		</div>
